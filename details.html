@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="In-depth explanations of React concepts for beginners." />
+  <title>React Guide — Deep Dive & Detailed Explanations</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚛️</text></svg>" />
+</head>
+<body>
+
+  <!-- ========== TOPBAR ========== -->
+  <header class="topbar" id="topbar">
+    <div style="display:flex;align-items:center;gap:12px">
+      <a href="index.html" class="topbar-brand">
+        <svg class="react-icon" viewBox="-11.5 -10.232 23 20.463" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle r="2.05" fill="#61dafb"/>
+          <g stroke="#61dafb" stroke-width="1" fill="none">
+            <ellipse rx="11" ry="4.2"/>
+            <ellipse rx="11" ry="4.2" transform="rotate(60)"/>
+            <ellipse rx="11" ry="4.2" transform="rotate(120)"/>
+          </g>
+        </svg>
+        React Guide
+      </a>
+    </div>
+    <div class="topbar-actions">
+      <a href="tanglish-guide.html" class="btn btn-outline btn-sm" style="margin-right: var(--space-md);">🔥 Tanglish Guide</a>
+      <a href="component-guide.html" class="btn btn-outline btn-sm" style="margin-right: var(--space-md);">🧩 Component Guide</a>
+      <a href="index.html" class="btn btn-outline btn-sm" style="margin-right: var(--space-md);">← Back to Main Guide</a>
+      <div class="theme-toggle" id="themeToggle" role="button" aria-label="Toggle dark mode" tabindex="0">
+        <div class="theme-toggle-knob">
+          <span id="themeIcon">☀️</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content" style="margin-left: 0;">
+
+    <section class="hero" id="hero" style="min-height: 400px;">
+      <div class="hero-content">
+        <div class="hero-badge">📖 The Deep Dive</div>
+        <h1><span class="gradient-text">Detailed</span> Explanations</h1>
+        <p>A beginner-friendly, jargon-free breakdown of every React concept. We use real-world analogies to make sure you truly understand the "why" and "how".</p>
+      </div>
+    </section>
+
+    <!-- 1. What is React -->
+    <section class="section visible">
+      <div class="section-header">
+        <div class="section-number">Topic 1</div>
+        <h2>What Exactly is React?</h2>
+      </div>
+      
+      <p>Imagine you are building a car. In the old days of web development (using plain HTML and JavaScript), you had to build the entire car from scratch every single time. If you wanted to change the steering wheel, you basically had to take the whole car apart and put it back together. This is very slow and error-prone.</p>
+      
+      <p><strong>React changes this.</strong> Instead of building a whole car at once, React lets you build <strong>LEGO blocks</strong>. You build a "Wheel block", a "Door block", and an "Engine block". Then, you just snap them together to make a car!</p>
+
+      <div class="callout tip">
+        <div class="callout-icon">💡</div>
+        <div class="callout-content">
+          <strong>The Virtual DOM Analogy: The Architect's Blueprint</strong>
+          <p>The "DOM" is the actual web page you see on your screen. Updating it directly is very slow. <br><br>React uses a <strong>Virtual DOM</strong>. Think of it like an architect's blueprint. If you want to add a window to a house, the architect doesn't tear down the real house. They draw the new window on a COPY of the blueprint (the Virtual DOM), compare it to the old blueprint, and then tell the builders to ONLY add that exact window to the real house. This makes React incredibly fast.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Installation & Setup -->
+    <section class="section visible">
+      <div class="section-header">
+        <div class="section-number">Topic 2</div>
+        <h2>Installation & Setup: Why do we need Node.js?</h2>
+      </div>
+
+      <p>A big confusion for beginners is: <em>"React is for web pages, so why do I need to install Node.js on my computer?"</em></p>
+      
+      <h3>The Translator (Node.js)</h3>
+      <p>Browsers (like Chrome or Safari) only understand basic HTML, CSS, and plain JavaScript. But React uses a special, easier-to-write syntax called <strong>JSX</strong>. Browsers do not understand JSX. </p>
+      <p><strong>Node.js</strong> acts like a factory on your computer. It takes your beautiful React JSX code and translates it (compiles it) into the boring, plain JavaScript that the browser can actually understand. Without Node.js, your computer wouldn't have the tools to do this translation.</p>
+
+      <h3>The App Store (npm)</h3>
+      <p>When you install Node.js, it comes with <strong>npm</strong> (Node Package Manager). Think of npm as the Google Play Store or Apple App Store for code. When you want to use React, or a calendar tool, or a charting tool, you use npm to download it instantly into your project.</p>
+    </section>
+
+    <!-- 3. Creating Your First Project -->
+    <section class="section visible">
+      <div class="section-header">
+        <div class="section-number">Topic 3</div>
+        <h2>Creating Your First Project: The Magic of Vite</h2>
+      </div>
+
+      <p>When we run <code>npm create vite@latest my-app -- --template react</code>, what is actually happening behind the scenes?</p>
+
+      <div class="callout info">
+        <div class="callout-icon">🏠</div>
+        <div class="callout-content">
+          <strong>The Pre-Built House Analogy</strong>
+          <p>Starting a React project completely from scratch means configuring hundreds of complex settings, setting up a local server, and creating folders. It would take hours. <br><br><strong>Vite</strong> is like buying a pre-built house. It instantly creates a folder with all the plumbing (settings), electricity (servers), and rooms (folders) already perfectly set up for you. You just walk in and start decorating (writing your code).</p>
+        </div>
+      </div>
+
+      <h3>Why do we run <code>npm install</code>?</h3>
+      <p>Vite creates the "blueprint" of the house, and a list of materials needed (this list is saved in a file called <code>package.json</code>). But the materials aren't there yet. When you run <code>npm install</code>, you are telling the computer: <em>"Go look at the list of materials and download all of them from the internet right now."</em> This downloads thousands of files into a folder called <code>node_modules</code>.</p>
+    </section>
+
+    <!-- 4. Running a React Application -->
+    <section class="section visible">
+      <div class="section-header">
+        <div class="section-number">Topic 4</div>
+        <h2>Running a React Application: Localhost & HMR</h2>
+      </div>
+
+      <p>When you type <code>npm run dev</code>, your computer turns into a mini web-server.</p>
+      
+      <h3>What is localhost?</h3>
+      <p>Normally, when you go to <code>google.com</code>, your computer asks a server on the other side of the world for the webpage. But when developing, you don't want to upload your code to the internet every time you make a change.<br>
+      <strong>Localhost</strong> means "this computer". <code>localhost:5173</code> is a private, secure website that only YOU can see on your own computer. It's your private testing ground.</p>
+
+      <h3>Hot Module Replacement (HMR)</h3>
+      <p>In the past, if you changed a color in your code, you had to manually click "Refresh" on your browser to see it. <strong>HMR</strong> is a magical feature built into Vite. It acts like a live wire connecting your code editor to your browser. The moment you press "Save" in your code, HMR injects just that tiny change directly into the browser instantly, without the page ever refreshing. It saves you thousands of clicks.</p>
+    </section>
+
+    <!-- 5. Components -->
+    <section class="section visible">
+      <div class="section-header">
+        <div class="section-number">Topic 5</div>
+        <h2>Components: The Heart of React</h2>
+      </div>
+
+      <p>Components are custom HTML tags you invent. Instead of just <code>&lt;button&gt;</code>, you can create <code>&lt;BuyNowButton&gt;</code>. But how do components handle data? This is where <strong>Props</strong> and <strong>State</strong> come in. This is the most important concept in React.</p>
+
+      <h3>Props = Genetics (Passed down, cannot change)</h3>
+      <p><strong>Props</strong> (Properties) are like DNA passed from a parent to a child. If a mother has brown eyes, she passes "brown eyes" to her child. The child cannot magically change their eye color. </p>
+      <p>In React, a parent component passes data (Props) to a child component. The child just accepts the data and displays it. <em>A child component can NEVER change its own props.</em></p>
+
+      <h3>State = Mood (Internal, can change)</h3>
+      <p><strong>State</strong> is like your current mood. You can be happy right now, but a few minutes later, you might become hungry, and then tired. Your mood is controlled by YOU, internally, and it changes over time.</p>
+      <p>In React, if a component has data that needs to change (like a counter going up, or a text box being typed into), it uses <strong>State</strong>. When State changes, React immediately says, <em>"Oh, the data changed! Let me redraw this component to show the new data!"</em></p>
+
+      <div class="callout warning">
+        <div class="callout-icon">⚖️</div>
+        <div class="callout-content">
+          <strong>The Golden Rule</strong>
+          <p>Use <strong>Props</strong> to pass data downwards from a Parent to a Child.<br>
+          Use <strong>State</strong> to handle things that the user can change (clicks, typing, opening a menu).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Libraries -->
+    <section class="section visible">
+      <div class="section-header">
+        <div class="section-number">Topic 6</div>
+        <h2>React Libraries: Don't Reinvent the Wheel</h2>
+      </div>
+
+      <p>React is considered a "Library", not a full "Framework". What does that mean?</p>
+      <p>A <strong>Framework</strong> (like Angular) is like buying a fully furnished house. It comes with a couch, a bed, a TV, and a microwave. If you don't like the couch, too bad, you have to use it. It has strict rules.</p>
+      <p><strong>React</strong> is like buying a beautiful, empty house. It gives you the perfect walls and floors, but you get to choose your own furniture from IKEA. These pieces of furniture are called <strong>Third-Party Libraries</strong>.</p>
+      
+      <ul>
+        <li>Need to fetch data from the internet? You don't write complex network code yourself; you install the <strong>Axios</strong> library.</li>
+        <li>Need different pages (Home, About, Contact)? React doesn't have pages built-in. You install the <strong>React Router</strong> library.</li>
+        <li>Need cool icons? You install the <strong>React Icons</strong> library.</li>
+      </ul>
+      <p>Libraries allow you to borrow millions of hours of hard work done by other developers for free!</p>
+    </section>
+
+    <!-- 7. Importing -->
+    <section class="section visible" style="margin-bottom: var(--space-4xl);">
+      <div class="section-header">
+        <div class="section-number">Topic 7</div>
+        <h2>Importing: Wiring it all together</h2>
+      </div>
+
+      <p>When you have dozens of components and libraries, they all live in different files. How do they talk to each other?</p>
+      
+      <p>Think of your React app like a giant corporation. <br>
+      - The <code>App.jsx</code> file is the CEO. <br>
+      - The <code>Header.jsx</code> file is the Marketing Manager.<br>
+      - The <code>Axios</code> library is an outside Consultant.</p>
+
+      <p>The CEO cannot do all the work alone. They have to call the Marketing Manager into their office. In code, this is an <strong>Import</strong>.</p>
+      
+      <div class="code-block">
+        <div class="code-body"><pre><span class="comment">// The CEO is calling the Marketing Manager into the office</span>
+<span class="keyword">import</span> <span class="function">Header</span> <span class="keyword">from</span> <span class="string">'./Header'</span>;
+
+<span class="comment">// The CEO is hiring the outside Consultant</span>
+<span class="keyword">import</span> <span class="variable">axios</span> <span class="keyword">from</span> <span class="string">'axios'</span>;</pre></div>
+      </div>
+
+      <h3>Default vs Named Imports</h3>
+      <p>If a file only exports ONE main thing (like a single component), we use a <strong>Default Import</strong> (no curly braces). <br>
+      <code>import Button from './Button';</code></p>
+
+      <p>If a file exports MULTIPLE different tools, you have to be specific about which tool you want to take out of the box. We use a <strong>Named Import</strong> (with curly braces).<br>
+      <code>import { useState, useEffect } from 'react';</code></p>
+      
+      <p>This keeps your code lightweight, because you only import exactly what you need, rather than loading the whole giant toolbox into memory.</p>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <p>
+      Built with ❤️ for learning
+      <svg class="react-icon" viewBox="-11.5 -10.232 23 20.463" xmlns="http://www.w3.org/2000/svg" style="width:20px;height:20px"><circle r="2.05" fill="#61dafb"/><g stroke="#61dafb" stroke-width="1" fill="none"><ellipse rx="11" ry="4.2"/><ellipse rx="11" ry="4.2" transform="rotate(60)"/><ellipse rx="11" ry="4.2" transform="rotate(120)"/></g></svg>
+      React Guide — 2024
+    </p>
+  </footer>
+
+  <script>
+    // Theme logic for the Deep Dive page
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const html = document.documentElement;
+
+    const savedTheme = localStorage.getItem('react-guide-theme') || 'light';
+    html.setAttribute('data-theme', savedTheme);
+    themeIcon.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+
+    themeToggle.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('react-guide-theme', next);
+      themeIcon.textContent = next === 'dark' ? '🌙' : '☀️';
+    });
+  </script>
+</body>
+</html>

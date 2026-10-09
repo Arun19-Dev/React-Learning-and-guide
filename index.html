@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn React from scratch — an interactive guide covering components, state, props, libraries, and more with live code examples and hands-on exercises." />
+  <title>React Guide — Learn React from Beginner to Advanced</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚛️</text></svg>" />
+</head>
+<body>
+
+  <!-- ========== TOPBAR ========== -->
+  <header class="topbar" id="topbar">
+    <div style="display:flex;align-items:center;gap:12px">
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+      <a href="#hero" class="topbar-brand">
+        <!-- React SVG icon -->
+        <svg class="react-icon" viewBox="-11.5 -10.232 23 20.463" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle r="2.05" fill="#61dafb"/>
+          <g stroke="#61dafb" stroke-width="1" fill="none">
+            <ellipse rx="11" ry="4.2"/>
+            <ellipse rx="11" ry="4.2" transform="rotate(60)"/>
+            <ellipse rx="11" ry="4.2" transform="rotate(120)"/>
+          </g>
+        </svg>
+        React Guide
+      </a>
+    </div>
+    <div class="topbar-actions">
+      <a href="tanglish-guide.html" class="btn btn-outline btn-sm">🔥 Tanglish Guide</a>
+      <a href="component-guide.html" class="btn btn-outline btn-sm">🧩 Component Guide</a>
+      <a href="details.html" class="btn btn-outline btn-sm">📖 Deep Dive</a>
+      <div class="theme-toggle" id="themeToggle" role="button" aria-label="Toggle dark mode" tabindex="0">
+        <div class="theme-toggle-knob">
+          <span id="themeIcon">☀️</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- ========== SIDEBAR ========== -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-progress">
+      <div class="sidebar-progress-label">
+        <span>Your Progress</span>
+        <span id="progressPercent">0%</span>
+      </div>
+      <div class="sidebar-progress-track">
+        <div class="sidebar-progress-fill" id="sidebarProgressFill"></div>
+      </div>
+    </div>
+    <ul class="sidebar-nav" id="sidebarNav">
+      <li>
+        <a href="#what-is-react" class="sidebar-link" data-section="what-is-react">
+          <span class="link-number">1</span> What is React?
+        </a>
+      </li>
+      <li>
+        <a href="#installation" class="sidebar-link" data-section="installation">
+          <span class="link-number">2</span> Installation &amp; Setup
+        </a>
+      </li>
+      <li>
+        <a href="#first-project" class="sidebar-link" data-section="first-project">
+          <span class="link-number">3</span> First React Project
+        </a>
+      </li>
+      <li>
+        <a href="#running-app" class="sidebar-link" data-section="running-app">
+          <span class="link-number">4</span> Running Your App
+        </a>
+      </li>
+      <li>
+        <a href="#components" class="sidebar-link" data-section="components">
+          <span class="link-number">5</span> Components
+        </a>
+      </li>
+      <li>
+        <a href="#libraries" class="sidebar-link" data-section="libraries">
+          <span class="link-number">6</span> React Libraries
+        </a>
+      </li>
+      <li>
+        <a href="#importing" class="sidebar-link" data-section="importing">
+          <span class="link-number">7</span> Importing Libraries
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main class="main-content" id="mainContent">
+
+    <!-- ////// HERO ////// -->
+    <section class="hero" id="hero">
+      <div class="hero-atoms">
+        <svg class="floating-atom" viewBox="-11.5 -10.232 23 20.463" xmlns="http://www.w3.org/2000/svg"><circle r="2.05" fill="#61dafb"/><g stroke="#61dafb" stroke-width="1" fill="none"><ellipse rx="11" ry="4.2"/><ellipse rx="11" ry="4.2" transform="rotate(60)"/><ellipse rx="11" ry="4.2" transform="rotate(120)"/></g></svg>
+        <svg class="floating-atom" viewBox="-11.5 -10.232 23 20.463" xmlns="http://www.w3.org/2000/svg"><circle r="2.05" fill="#61dafb"/><g stroke="#61dafb" stroke-width="1" fill="none"><ellipse rx="11" ry="4.2"/><ellipse rx="11" ry="4.2" transform="rotate(60)"/><ellipse rx="11" ry="4.2" transform="rotate(120)"/></g></svg>
+        <svg class="floating-atom" viewBox="-11.5 -10.232 23 20.463" xmlns="http://www.w3.org/2000/svg"><circle r="2.05" fill="#61dafb"/><g stroke="#61dafb" stroke-width="1" fill="none"><ellipse rx="11" ry="4.2"/><ellipse rx="11" ry="4.2" transform="rotate(60)"/><ellipse rx="11" ry="4.2" transform="rotate(120)"/></g></svg>
+        <svg class="floating-atom" viewBox="-11.5 -10.232 23 20.463" xmlns="http://www.w3.org/2000/svg"><circle r="2.05" fill="#61dafb"/><g stroke="#61dafb" stroke-width="1" fill="none"><ellipse rx="11" ry="4.2"/><ellipse rx="11" ry="4.2" transform="rotate(60)"/><ellipse rx="11" ry="4.2" transform="rotate(120)"/></g></svg>
+        <svg class="floating-atom" viewBox="-11.5 -10.232 23 20.463" xmlns="http://www.w3.org/2000/svg"><circle r="2.05" fill="#61dafb"/><g stroke="#61dafb" stroke-width="1" fill="none"><ellipse rx="11" ry="4.2"/><ellipse rx="11" ry="4.2" transform="rotate(60)"/><ellipse rx="11" ry="4.2" transform="rotate(120)"/></g></svg>
+      </div>
+      <div class="hero-content">
+        <div class="hero-badge">🚀 Interactive Learning Platform</div>
+        <h1>Master <span class="gradient-text">React</span> Step by Step</h1>
+        <p>Go from complete beginner to building real components — with live code examples, visual animations, and hands-on exercises at every step.</p>
+        <a href="#what-is-react" class="hero-cta">Start Learning →</a>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         SECTION 1 — WHAT IS REACT
+         ========================================================== -->
+    <section class="section" id="what-is-react">
+      <div class="section-header">
+        <div class="section-number">CHAPTER 1</div>
+        <h2>What is React?</h2>
+        <p>React is a <strong>JavaScript library</strong> made by Facebook (now Meta). It helps you build user interfaces — the part of a website or app that people see and click on. Think of it like a set of building blocks for making web pages.</p>
+      </div>
+
+      <h3>Why Do Developers Love React?</h3>
+      <p>Before React, building big web apps was really hard. When you changed one thing, you had to update the whole page. React fixed that. Here are the core ideas that make React special:</p>
+
+      <div class="concept-grid stagger-children">
+        <div class="concept-card">
+          <div class="concept-card-icon">🧩</div>
+          <h4>Components</h4>
+          <p>Break your page into small, reusable pieces. A button, a menu, a card — each one is a component. Build once, use everywhere.</p>
+        </div>
+        <div class="concept-card">
+          <div class="concept-card-icon">⚡</div>
+          <h4>Virtual DOM</h4>
+          <p>React keeps a lightweight copy of the page in memory. When something changes, React figures out the smallest update needed — making your app super fast.</p>
+        </div>
+        <div class="concept-card">
+          <div class="concept-card-icon">🔄</div>
+          <h4>One-Way Data Flow</h4>
+          <p>Data flows from parent to child, like water flowing downhill. This makes your app easy to understand and debug.</p>
+        </div>
+        <div class="concept-card">
+          <div class="concept-card-icon">📦</div>
+          <h4>JSX Syntax</h4>
+          <p>Write HTML-like code right inside JavaScript. It looks familiar and makes building UIs feel natural and simple.</p>
+        </div>
+      </div>
+
+      <!-- Virtual DOM Animation -->
+      <h3>🎬 See the Virtual DOM in Action</h3>
+      <p>Click the <strong>"Update"</strong> button below to watch how React updates only the changed part — not the entire page:</p>
+
+      <div class="animation-panel">
+        <div class="panel-header">
+          <div class="panel-title">⚡ Virtual DOM — Smart Updates</div>
+          <button class="btn btn-primary btn-sm" id="vdomUpdateBtn">Update Name</button>
+        </div>
+        <div class="panel-body">
+          <div class="vdom-container">
+            <div class="dom-tree">
+              <div class="dom-tree-label">Virtual DOM</div>
+              <div class="dom-node root">&lt;App /&gt;</div>
+              <div class="dom-node element">&lt;Header /&gt;</div>
+              <div class="dom-node element" id="vdomName">&lt;h1&gt;Hello, World&lt;/h1&gt;</div>
+              <div class="dom-node element">&lt;Footer /&gt;</div>
+            </div>
+            <div class="dom-arrow">→</div>
+            <div class="dom-tree">
+              <div class="dom-tree-label">Compares &amp; Finds Difference</div>
+              <div class="dom-node element" style="opacity:0.4">&lt;Header /&gt; ✓ same</div>
+              <div class="dom-node changed" id="diffNode" style="opacity:0.4">&lt;h1&gt; ✏️ changed!</div>
+              <div class="dom-node element" style="opacity:0.4">&lt;Footer /&gt; ✓ same</div>
+            </div>
+            <div class="dom-arrow">→</div>
+            <div class="dom-tree">
+              <div class="dom-tree-label">Real DOM (only updates ↓)</div>
+              <div class="dom-node element" style="opacity:0.4">&lt;Header /&gt;</div>
+              <div class="dom-node changed" id="realDomNode">&lt;h1&gt;Hello, World&lt;/h1&gt;</div>
+              <div class="dom-node element" style="opacity:0.4">&lt;Footer /&gt;</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <div class="callout-icon">💡</div>
+        <div class="callout-content">
+          <strong>Key Takeaway</strong>
+          <p>React only updates the parts of the page that actually changed. This is why React apps feel fast and smooth, even with lots of data on screen.</p>
+        </div>
+      </div>
+
+      <!-- Exercise 1 -->
+      <div class="exercise" id="exercise1">
+        <div class="exercise-header">
+          <span class="exercise-badge">Exercise</span>
+          <span class="exercise-title">Check Your Understanding</span>
+        </div>
+        <div class="exercise-body">
+          <p>What is the main job of React's Virtual DOM?</p>
+          <div class="exercise-options" data-exercise="1" data-correct="2">
+            <div class="exercise-option" data-value="1">
+              <span class="option-marker">A</span>
+              <span>It replaces the entire webpage every time something changes</span>
+            </div>
+            <div class="exercise-option" data-value="2">
+              <span class="option-marker">B</span>
+              <span>It figures out the smallest change needed and only updates that part</span>
+            </div>
+            <div class="exercise-option" data-value="3">
+              <span class="option-marker">C</span>
+              <span>It stores all the data in a database</span>
+            </div>
+            <div class="exercise-option" data-value="4">
+              <span class="option-marker">D</span>
+              <span>It makes the app work without JavaScript</span>
+            </div>
+          </div>
+          <button class="exercise-check-btn" disabled>Check Answer</button>
+          <div class="exercise-feedback"></div>
+        </div>
+      </div>
+
+      <div class="section-nav">
+        <div></div>
+        <a href="#installation" class="section-nav-btn">Next: Installation &amp; Setup →</a>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         SECTION 2 — INSTALLATION & SETUP
+         ========================================================== -->
+    <section class="section" id="installation">
+      <div class="section-header">
+        <div class="section-number">CHAPTER 2</div>
+        <h2>Installation &amp; Setup</h2>
+        <p>Before you can build with React, you need two tools on your computer: <strong>Node.js</strong> and <strong>npm</strong> (Node Package Manager). Let's set them up step by step.</p>
+      </div>
+
+      <h3>What Are Node.js and npm?</h3>
+      <div class="concept-grid stagger-children">
+        <div class="concept-card">
+          <div class="concept-card-icon">🟢</div>
+          <h4>Node.js</h4>
+          <p>Node.js lets you run JavaScript outside the browser — on your computer. React's build tools need Node.js to work.</p>
+        </div>
+        <div class="concept-card">
+          <div class="concept-card-icon">📦</div>
+          <h4>npm</h4>
+          <p>npm is like an app store for JavaScript code. It comes free with Node.js. You use it to download React and other tools.</p>
+        </div>
+      </div>
+
+      <h3>Step-by-Step Installation</h3>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>Download Node.js</h4>
+            <p>Go to <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a> and click the <strong>LTS</strong> (Long Term Support) button. This gives you the most stable version.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>Run the Installer</h4>
+            <p>Open the downloaded file and follow the installer. Keep all the default settings — just click <strong>Next</strong> until it finishes.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4>Check the Installation</h4>
+            <p>Open your <strong>Terminal</strong> (Mac) or <strong>Command Prompt</strong> (Windows) and type these commands:</p>
+            <div class="code-block">
+              <div class="code-header">
+                <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+                <span class="code-language">Terminal</span>
+                <button class="code-copy-btn" onclick="copyCode(this)">📋 Copy</button>
+              </div>
+              <div class="code-body"><pre>node --version
+npm --version</pre></div>
+            </div>
+            <p>You should see version numbers like <span class="inline-code">v20.10.0</span> and <span class="inline-code">10.2.0</span>. If you see them, you're all set!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout tip">
+        <div class="callout-icon">✅</div>
+        <div class="callout-content">
+          <strong>Quick Tip</strong>
+          <p>Always download the <strong>LTS</strong> version of Node.js. It's the most tested and stable. The "Current" version has newer features but might have bugs.</p>
+        </div>
+      </div>
+
+      <h3>Code Editor — VS Code</h3>
+      <p>You'll also need a code editor. We recommend <strong>Visual Studio Code</strong> (VS Code) — it's free, powerful, and most React developers use it.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>Download VS Code</h4>
+            <p>Visit <a href="https://code.visualstudio.com" target="_blank" rel="noopener">code.visualstudio.com</a> and download it for your operating system.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>Helpful Extensions</h4>
+            <p>Install these VS Code extensions to make React development easier:</p>
+            <ul>
+              <li><strong>ES7+ React Snippets</strong> — gives you shortcuts for React code</li>
+              <li><strong>Prettier</strong> — automatically formats your code to look clean</li>
+              <li><strong>Auto Rename Tag</strong> — renames both the opening and closing HTML tag</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exercise 2 -->
+      <div class="exercise" id="exercise2">
+        <div class="exercise-header">
+          <span class="exercise-badge">Exercise</span>
+          <span class="exercise-title">Verify Your Setup</span>
+        </div>
+        <div class="exercise-body">
+          <p>Which command checks if Node.js is installed on your computer?</p>
+          <div class="exercise-options" data-exercise="2" data-correct="1">
+            <div class="exercise-option" data-value="1">
+              <span class="option-marker">A</span>
+              <span><code>node --version</code></span>
+            </div>
+            <div class="exercise-option" data-value="2">
+              <span class="option-marker">B</span>
+              <span><code>react --version</code></span>
+            </div>
+            <div class="exercise-option" data-value="3">
+              <span class="option-marker">C</span>
+              <span><code>install node</code></span>
+            </div>
+            <div class="exercise-option" data-value="4">
+              <span class="option-marker">D</span>
+              <span><code>check nodejs</code></span>
+            </div>
+          </div>
+          <button class="exercise-check-btn" disabled>Check Answer</button>
+          <div class="exercise-feedback"></div>
+        </div>
+      </div>
+
+      <div class="section-nav">
+        <a href="#what-is-react" class="section-nav-btn prev">← Previous: What is React?</a>
+        <a href="#first-project" class="section-nav-btn">Next: First Project →</a>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         SECTION 3 — CREATING YOUR FIRST PROJECT
+         ========================================================== -->
+    <section class="section" id="first-project">
+      <div class="section-header">
+        <div class="section-number">CHAPTER 3</div>
+        <h2>Creating Your First React Project</h2>
+        <p>Now let's build something! React gives you a tool called <strong>Vite</strong> (pronounced "veet") to create a new project with one command. It sets up everything for you.</p>
+      </div>
+
+      <h3>Create a Project with Vite</h3>
+      <p>Open your terminal and run this command:</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+          <span class="code-language">Terminal</span>
+          <button class="code-copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <div class="code-body"><pre><span class="comment"># Create a new React project called "my-first-app"</span>
+npm create vite@latest my-first-app -- --template react
+
+<span class="comment"># Move into the project folder</span>
+cd my-first-app
+
+<span class="comment"># Install all the packages React needs</span>
+npm install</pre></div>
+      </div>
+
+      <div class="callout info">
+        <div class="callout-icon">📝</div>
+        <div class="callout-content">
+          <strong>What Just Happened?</strong>
+          <p><span class="inline-code">npm create vite@latest</span> downloads and runs the Vite project creator. The <span class="inline-code">--template react</span> flag tells it to set up a React project. Then <span class="inline-code">npm install</span> downloads all the code React needs to work.</p>
+        </div>
+      </div>
+
+      <h3>Understanding Your Project Structure</h3>
+      <p>After creating the project, you'll see these folders and files. Let's understand what each one does:</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+          <span class="code-language">Project Structure</span>
+        </div>
+        <div class="code-body"><pre>my-first-app/
+├── node_modules/      <span class="comment">← Downloaded packages (don't touch this)</span>
+├── public/            <span class="comment">← Static files like images</span>
+├── src/               <span class="comment">← YOUR CODE GOES HERE ⭐</span>
+│   ├── App.jsx        <span class="comment">← The main component</span>
+│   ├── App.css        <span class="comment">← Styles for App</span>
+│   ├── main.jsx       <span class="comment">← The entry point (starts React)</span>
+│   └── index.css      <span class="comment">← Global styles</span>
+├── index.html         <span class="comment">← The HTML page</span>
+├── package.json       <span class="comment">← Project info &amp; list of packages</span>
+└── vite.config.js     <span class="comment">← Vite's settings</span></pre></div>
+      </div>
+
+      <h3>Your First React File — <span class="inline-code">App.jsx</span></h3>
+      <p>This is the heart of your app. Let's look at what's inside:</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+          <span class="code-language">src/App.jsx</span>
+          <button class="code-copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <div class="code-body"><pre><span class="comment">// This is a React component — a reusable piece of your page</span>
+<span class="keyword">function</span> <span class="function">App</span>() {
+  <span class="keyword">return</span> (
+    <span class="tag">&lt;div&gt;</span>
+      <span class="tag">&lt;h1&gt;</span>Hello, React! 🎉<span class="tag">&lt;/h1&gt;</span>
+      <span class="tag">&lt;p&gt;</span>This is my first React app.<span class="tag">&lt;/p&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  );
+}
+
+<span class="keyword">export default</span> <span class="function">App</span>;</pre></div>
+      </div>
+
+      <div class="callout tip">
+        <div class="callout-icon">🔑</div>
+        <div class="callout-content">
+          <strong>What is JSX?</strong>
+          <p>The HTML-looking code inside the <span class="inline-code">return()</span> is called <strong>JSX</strong>. It's not real HTML — it's a special syntax that React turns into real HTML for the browser. You write what looks like HTML, but it's actually JavaScript!</p>
+        </div>
+      </div>
+
+      <!-- Exercise 3 -->
+      <div class="exercise" id="exercise3">
+        <div class="exercise-header">
+          <span class="exercise-badge">Exercise</span>
+          <span class="exercise-title">Write Your First JSX</span>
+        </div>
+        <div class="exercise-body">
+          <p>Which folder should you put your React code in?</p>
+          <div class="exercise-options" data-exercise="3" data-correct="2">
+            <div class="exercise-option" data-value="1">
+              <span class="option-marker">A</span>
+              <span>node_modules/</span>
+            </div>
+            <div class="exercise-option" data-value="2">
+              <span class="option-marker">B</span>
+              <span>src/</span>
+            </div>
+            <div class="exercise-option" data-value="3">
+              <span class="option-marker">C</span>
+              <span>public/</span>
+            </div>
+            <div class="exercise-option" data-value="4">
+              <span class="option-marker">D</span>
+              <span>node_modules/react/</span>
+            </div>
+          </div>
+          <button class="exercise-check-btn" disabled>Check Answer</button>
+          <div class="exercise-feedback"></div>
+        </div>
+      </div>
+
+      <div class="section-nav">
+        <a href="#installation" class="section-nav-btn prev">← Previous: Installation</a>
+        <a href="#running-app" class="section-nav-btn">Next: Running Your App →</a>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         SECTION 4 — RUNNING YOUR APP
+         ========================================================== -->
+    <section class="section" id="running-app">
+      <div class="section-header">
+        <div class="section-number">CHAPTER 4</div>
+        <h2>Running a React Application</h2>
+        <p>You've created a project — now let's see it in the browser! React comes with a built-in development server that shows your app and updates it <strong>instantly</strong> when you make changes.</p>
+      </div>
+
+      <h3>Start the Development Server</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+          <span class="code-language">Terminal</span>
+          <button class="code-copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <div class="code-body"><pre><span class="comment"># Make sure you're inside your project folder</span>
+cd my-first-app
+
+<span class="comment"># Start the development server</span>
+npm run dev</pre></div>
+      </div>
+
+      <p>After running this, you'll see a message like:</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+          <span class="code-language">Terminal Output</span>
+        </div>
+        <div class="code-body"><pre><span class="string">  VITE v5.0.0  ready in 300 ms</span>
+
+  ➜  Local:   <span class="function">http://localhost:5173/</span>
+  ➜  Network: <span class="function">http://192.168.1.5:5173/</span>
+  ➜  press <span class="keyword">h + enter</span> to show help</pre></div>
+      </div>
+
+      <p>Open your browser and go to <span class="inline-code">http://localhost:5173</span>. You'll see your React app running! 🎉</p>
+
+      <h3>🎬 Hot Module Replacement (HMR)</h3>
+      <p>One of the best features of React development: when you save a file, the browser updates <strong>immediately</strong> — no manual refresh needed. This is called <strong>Hot Module Replacement</strong>.</p>
+
+      <!-- HMR Demo -->
+      <div class="animation-panel">
+        <div class="panel-header">
+          <div class="panel-title">🔥 Try Hot Reload — Edit and See Instant Changes</div>
+        </div>
+        <div class="panel-body">
+          <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:var(--space-md)">Type in the box below and watch the preview update in real time:</p>
+          <input type="text" id="hmrInput" value="Hello, React!" placeholder="Type something..."
+            style="padding:12px 20px;border-radius:var(--radius-md);border:2px solid var(--border-color);background:var(--bg-tertiary);color:var(--text-primary);font-size:1rem;font-family:var(--font-sans);width:100%;max-width:400px;outline:none;transition:border-color var(--transition-fast)"
+            onfocus="this.style.borderColor='var(--accent-primary)'" onblur="this.style.borderColor='var(--border-color)'" />
+          <div class="demo-result" style="margin-top:var(--space-lg);width:100%;max-width:500px">
+            <small style="color:var(--text-tertiary);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em">Browser Preview</small>
+            <h2 id="hmrOutput" style="font-size:1.8rem;font-weight:800;background:var(--accent-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;transition:all 0.2s ease">Hello, React!</h2>
+          </div>
+        </div>
+      </div>
+
+      <h3>Important Commands to Remember</h3>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Command</th>
+            <th>What It Does</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="inline-code">npm run dev</span></td>
+            <td>Starts the development server (for building)</td>
+          </tr>
+          <tr>
+            <td><span class="inline-code">npm run build</span></td>
+            <td>Creates the final version for your real website</td>
+          </tr>
+          <tr>
+            <td><span class="inline-code">npm run preview</span></td>
+            <td>Preview the built version locally</td>
+          </tr>
+          <tr>
+            <td><span class="inline-code">Ctrl + C</span></td>
+            <td>Stops the development server</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout warning">
+        <div class="callout-icon">⚠️</div>
+        <div class="callout-content">
+          <strong>Common Mistake</strong>
+          <p>If you see an error saying "port already in use", it means another server is running. Press <strong>Ctrl + C</strong> to stop it, or use a different port by running <span class="inline-code">npm run dev -- --port 3000</span>.</p>
+        </div>
+      </div>
+
+      <!-- Exercise 4 -->
+      <div class="exercise" id="exercise4">
+        <div class="exercise-header">
+          <span class="exercise-badge">Exercise</span>
+          <span class="exercise-title">Test Your Knowledge</span>
+        </div>
+        <div class="exercise-body">
+          <p>What does the command <span class="inline-code">npm run dev</span> do?</p>
+          <div class="exercise-options" data-exercise="4" data-correct="3">
+            <div class="exercise-option" data-value="1">
+              <span class="option-marker">A</span>
+              <span>Deletes the project</span>
+            </div>
+            <div class="exercise-option" data-value="2">
+              <span class="option-marker">B</span>
+              <span>Installs React packages</span>
+            </div>
+            <div class="exercise-option" data-value="3">
+              <span class="option-marker">C</span>
+              <span>Starts a local development server so you can see your app in the browser</span>
+            </div>
+            <div class="exercise-option" data-value="4">
+              <span class="option-marker">D</span>
+              <span>Uploads the app to the internet</span>
+            </div>
+          </div>
+          <button class="exercise-check-btn" disabled>Check Answer</button>
+          <div class="exercise-feedback"></div>
+        </div>
+      </div>
+
+      <div class="section-nav">
+        <a href="#first-project" class="section-nav-btn prev">← Previous: First Project</a>
+        <a href="#components" class="section-nav-btn">Next: Components →</a>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         SECTION 5 — COMPONENTS
+         ========================================================== -->
+    <section class="section" id="components">
+      <div class="section-header">
+        <div class="section-number">CHAPTER 5</div>
+        <h2>Creating &amp; Working with Components</h2>
+        <p>Components are the <strong>building blocks</strong> of every React app. Think of them like LEGO pieces — small, reusable parts that fit together to build something big. Let's learn how they work!</p>
+      </div>
+
+      <h3>What is a Component?</h3>
+      <p>A component is just a <strong>JavaScript function that returns JSX</strong> (the HTML-like code). Here's the simplest component you can make:</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+          <span class="code-language">src/Greeting.jsx</span>
+          <button class="code-copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <div class="code-body"><pre><span class="comment">// A simple component — it's just a function!</span>
+<span class="keyword">function</span> <span class="function">Greeting</span>() {
+  <span class="keyword">return</span> <span class="tag">&lt;h2&gt;</span>Hello there! 👋<span class="tag">&lt;/h2&gt;</span>;
+}
+
+<span class="keyword">export default</span> <span class="function">Greeting</span>;</pre></div>
+      </div>
+
+      <div class="callout info">
+        <div class="callout-icon">📐</div>
+        <div class="callout-content">
+          <strong>Rules for Components</strong>
+          <p>1. The name <strong>must start with a capital letter</strong> (like <span class="inline-code">Greeting</span>, not <span class="inline-code">greeting</span>).<br/>
+          2. It must <strong>return JSX</strong> — some UI to display.<br/>
+          3. Save it in a <span class="inline-code">.jsx</span> file.</p>
+        </div>
+      </div>
+
+      <h3>🎬 Component Tree — How Components Fit Together</h3>
+      <p>In a React app, components form a <strong>tree structure</strong>. The top component (usually <span class="inline-code">App</span>) holds child components. Click on any component to highlight it:</p>
+
+      <div class="animation-panel">
+        <div class="panel-header">
+          <div class="panel-title">🌳 Interactive Component Tree</div>
+        </div>
+        <div class="panel-body">
+          <div class="component-tree-visual">
+            <div class="tree-node">
+              <div class="tree-node-box" id="treeApp" onclick="highlightTreeNode(this)">📦 App</div>
+            </div>
+            <div class="tree-connector"></div>
+            <div class="tree-children">
+              <div class="tree-node">
+                <div class="tree-connector"></div>
+                <div class="tree-node-box" onclick="highlightTreeNode(this)" style="background:linear-gradient(135deg,#f07178,#ff5252)">🎨 Header</div>
+                <div class="tree-connector"></div>
+                <div class="tree-children">
+                  <div class="tree-node">
+                    <div class="tree-connector"></div>
+                    <div class="tree-node-box" onclick="highlightTreeNode(this)" style="background:linear-gradient(135deg,#c792ea,#9c27b0);font-size:0.8rem">Logo</div>
+                  </div>
+                  <div class="tree-node">
+                    <div class="tree-connector"></div>
+                    <div class="tree-node-box" onclick="highlightTreeNode(this)" style="background:linear-gradient(135deg,#c792ea,#9c27b0);font-size:0.8rem">NavBar</div>
+                  </div>
+                </div>
+              </div>
+              <div class="tree-node">
+                <div class="tree-connector"></div>
+                <div class="tree-node-box" onclick="highlightTreeNode(this)" style="background:linear-gradient(135deg,#82aaff,#2196f3)">📄 MainContent</div>
+              </div>
+              <div class="tree-node">
+                <div class="tree-connector"></div>
+                <div class="tree-node-box" onclick="highlightTreeNode(this)" style="background:linear-gradient(135deg,#c3e88d,#4caf50)">🔗 Footer</div>
+              </div>
+            </div>
+          </div>
+          <p style="color:var(--text-tertiary);font-size:0.82rem;margin-top:var(--space-md)">👆 Click any component to highlight it</p>
+        </div>
+      </div>
+
+      <h3>Props — Passing Data to Components</h3>
+      <p><strong>Props</strong> (short for "properties") let you send data into a component, like passing an argument to a function. This makes components reusable with different data.</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+          <span class="code-language">src/UserCard.jsx</span>
+          <button class="code-copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <div class="code-body"><pre><span class="comment">// This component takes "name" and "role" as props</span>
+<span class="keyword">function</span> <span class="function">UserCard</span>({ <span class="variable">name</span>, <span class="variable">role</span> }) {
+  <span class="keyword">return</span> (
+    <span class="tag">&lt;div</span> <span class="attr">className</span>=<span class="string">"card"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;h3&gt;</span>{<span class="variable">name</span>}<span class="tag">&lt;/h3&gt;</span>
+      <span class="tag">&lt;p&gt;</span>{<span class="variable">role</span>}<span class="tag">&lt;/p&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  );
+}
+
+<span class="comment">// Use it like this:</span>
+<span class="tag">&lt;UserCard</span> <span class="attr">name</span>=<span class="string">"Alice"</span> <span class="attr">role</span>=<span class="string">"Developer"</span> <span class="tag">/&gt;</span>
+<span class="tag">&lt;UserCard</span> <span class="attr">name</span>=<span class="string">"Bob"</span> <span class="attr">role</span>=<span class="string">"Designer"</span> <span class="tag">/&gt;</span></pre></div>
+      </div>
+
+      <!-- Live Props Demo -->
+      <div class="demo-panel">
+        <div class="demo-header">
+          <span class="demo-icon">👤</span>
+          Live Preview — Same Component, Different Props
+        </div>
+        <div class="demo-body">
+          <div class="props-demo">
+            <div class="user-card-demo">
+              <div class="user-card-avatar">A</div>
+              <h5>Alice</h5>
+              <p>Developer</p>
+            </div>
+            <div class="user-card-demo">
+              <div class="user-card-avatar" style="background:linear-gradient(135deg,#f07178,#ff5252)">B</div>
+              <h5>Bob</h5>
+              <p>Designer</p>
+            </div>
+            <div class="user-card-demo">
+              <div class="user-card-avatar" style="background:linear-gradient(135deg,#c3e88d,#4caf50)">C</div>
+              <h5>Charlie</h5>
+              <p>Manager</p>
+            </div>
+          </div>
+          <p style="text-align:center;color:var(--text-tertiary);font-size:0.82rem;margin-top:var(--space-md)">☝️ Same <span class="inline-code">UserCard</span> component, 3 different sets of props!</p>
+        </div>
+      </div>
+
+      <h3>State — Making Components Interactive</h3>
+      <p><strong>State</strong> is data that can <em>change</em> over time. When state changes, React automatically re-renders (redraws) the component. This is how you make things interactive!</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+          <span class="code-language">src/Counter.jsx</span>
+          <button class="code-copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <div class="code-body"><pre><span class="keyword">import</span> { <span class="function">useState</span> } <span class="keyword">from</span> <span class="string">'react'</span>;
+
+<span class="keyword">function</span> <span class="function">Counter</span>() {
+  <span class="comment">// useState gives us: [currentValue, functionToUpdateIt]</span>
+  <span class="keyword">const</span> [<span class="variable">count</span>, <span class="function">setCount</span>] = <span class="function">useState</span>(<span class="number">0</span>);
+
+  <span class="keyword">return</span> (
+    <span class="tag">&lt;div&gt;</span>
+      <span class="tag">&lt;h2&gt;</span>Count: {<span class="variable">count</span>}<span class="tag">&lt;/h2&gt;</span>
+      <span class="tag">&lt;button</span> <span class="attr">onClick</span>={() <span class="operator">=&gt;</span> <span class="function">setCount</span>(<span class="variable">count</span> <span class="operator">+</span> <span class="number">1</span>)}<span class="tag">&gt;</span>
+        Add One
+      <span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  );
+}</pre></div>
+      </div>
+
+      <!-- Interactive Counter Demo -->
+      <div class="demo-panel">
+        <div class="demo-header">
+          <span class="demo-icon">🎮</span>
+          Try It — Interactive Counter (working demo!)
+        </div>
+        <div class="demo-body">
+          <div class="counter-demo">
+            <div class="counter-display" id="counterDisplay">0</div>
+            <div class="counter-buttons">
+              <button class="counter-btn" id="counterDec" aria-label="Decrease">−</button>
+              <button class="counter-btn" id="counterReset" aria-label="Reset" style="font-size:0.9rem">↺</button>
+              <button class="counter-btn" id="counterInc" aria-label="Increase">+</button>
+            </div>
+            <p style="color:var(--text-tertiary);font-size:0.82rem">Click the buttons — this is React state in action!</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>A Complete Component Example</h3>
+      <p>Let's put props and state together in one component — a greeting card with a toggleable message:</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+          <span class="code-language">src/GreetingCard.jsx</span>
+          <button class="code-copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <div class="code-body"><pre><span class="keyword">import</span> { <span class="function">useState</span> } <span class="keyword">from</span> <span class="string">'react'</span>;
+
+<span class="keyword">function</span> <span class="function">GreetingCard</span>({ <span class="variable">name</span> }) {
+  <span class="keyword">const</span> [<span class="variable">showMessage</span>, <span class="function">setShowMessage</span>] = <span class="function">useState</span>(<span class="keyword">false</span>);
+
+  <span class="keyword">return</span> (
+    <span class="tag">&lt;div</span> <span class="attr">style</span>={{ <span class="attr">padding</span>: <span class="string">'20px'</span>, <span class="attr">border</span>: <span class="string">'1px solid #ddd'</span>, <span class="attr">borderRadius</span>: <span class="string">'12px'</span> }}<span class="tag">&gt;</span>
+      <span class="tag">&lt;h2&gt;</span>Hi, {<span class="variable">name</span>}! 👋<span class="tag">&lt;/h2&gt;</span>
+      <span class="tag">&lt;button</span> <span class="attr">onClick</span>={() <span class="operator">=&gt;</span> <span class="function">setShowMessage</span>(!<span class="variable">showMessage</span>)}<span class="tag">&gt;</span>
+        {<span class="variable">showMessage</span> ? <span class="string">'Hide'</span> : <span class="string">'Show'</span>} Message
+      <span class="tag">&lt;/button&gt;</span>
+      {<span class="variable">showMessage</span> <span class="operator">&amp;&amp;</span> <span class="tag">&lt;p&gt;</span>Welcome to the world of React! 🚀<span class="tag">&lt;/p&gt;</span>}
+    <span class="tag">&lt;/div&gt;</span>
+  );
+}
+
+<span class="keyword">export default</span> <span class="function">GreetingCard</span>;</pre></div>
+      </div>
+
+      <!-- Toggle Demo -->
+      <div class="demo-panel">
+        <div class="demo-header">
+          <span class="demo-icon">✨</span>
+          Try It — Toggle Message Demo
+        </div>
+        <div class="demo-body" style="text-align:center">
+          <h2 style="font-size:1.4rem;font-weight:700;margin-bottom:var(--space-md)">Hi, Student! 👋</h2>
+          <button class="btn btn-primary" id="toggleMsgBtn">Show Message</button>
+          <div id="toggleMsgContent" style="margin-top:var(--space-md);padding:var(--space-md);background:rgba(108,99,255,0.08);border-radius:var(--radius-md);display:none;animation:fadeInUp 0.3s ease">
+            <p style="font-size:1.05rem;color:var(--text-primary);margin:0">Welcome to the world of React! 🚀</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exercise 5 -->
+      <div class="exercise" id="exercise5">
+        <div class="exercise-header">
+          <span class="exercise-badge">Exercise</span>
+          <span class="exercise-title">Components Quiz</span>
+        </div>
+        <div class="exercise-body">
+          <p>In React, what is the difference between <strong>props</strong> and <strong>state</strong>?</p>
+          <div class="exercise-options" data-exercise="5" data-correct="3">
+            <div class="exercise-option" data-value="1">
+              <span class="option-marker">A</span>
+              <span>Props and state are exactly the same thing</span>
+            </div>
+            <div class="exercise-option" data-value="2">
+              <span class="option-marker">B</span>
+              <span>State is passed from parent to child, props change over time</span>
+            </div>
+            <div class="exercise-option" data-value="3">
+              <span class="option-marker">C</span>
+              <span>Props are passed from parent to child (read-only), state is managed inside the component and can change</span>
+            </div>
+            <div class="exercise-option" data-value="4">
+              <span class="option-marker">D</span>
+              <span>Props are for styling, state is for data</span>
+            </div>
+          </div>
+          <button class="exercise-check-btn" disabled>Check Answer</button>
+          <div class="exercise-feedback"></div>
+        </div>
+      </div>
+
+      <div class="section-nav">
+        <a href="#running-app" class="section-nav-btn prev">← Previous: Running App</a>
+        <a href="#libraries" class="section-nav-btn">Next: React Libraries →</a>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         SECTION 6 — REACT LIBRARIES
+         ========================================================== -->
+    <section class="section" id="libraries">
+      <div class="section-header">
+        <div class="section-number">CHAPTER 6</div>
+        <h2>Understanding React Libraries</h2>
+        <p>React alone is great for building UIs. But real-world apps need more — routing between pages, fetching data from servers, managing forms, and more. That's where <strong>libraries</strong> come in.</p>
+      </div>
+
+      <h3>What is a Library?</h3>
+      <p>A library is <strong>pre-written code</strong> someone else made that you can use in your project. Instead of building everything from scratch, you install a library and use it. Think of it like ordering takeout instead of cooking every meal yourself.</p>
+
+      <div class="callout info">
+        <div class="callout-icon">🧠</div>
+        <div class="callout-content">
+          <strong>Library vs Framework</strong>
+          <p>A <strong>library</strong> (like React) gives you tools to use when YOU need them — you're in control. A <strong>framework</strong> (like Angular) tells YOU how to build — it's in control. React is a library because it lets you decide how to structure your app.</p>
+        </div>
+      </div>
+
+      <h3>Essential React Libraries</h3>
+      <p>Here are the most popular and useful libraries for React apps:</p>
+
+      <div class="library-grid stagger-children">
+        <div class="library-card">
+          <span class="library-card-badge routing">Routing</span>
+          <h4>React Router</h4>
+          <p>Lets your app have multiple pages. Users can go from a Home page to an About page without reloading the whole site.</p>
+          <div class="install-cmd">npm install react-router-dom</div>
+        </div>
+        <div class="library-card">
+          <span class="library-card-badge state">State</span>
+          <h4>Zustand</h4>
+          <p>A tiny, simple way to share data between many components. Much easier to learn than Redux!</p>
+          <div class="install-cmd">npm install zustand</div>
+        </div>
+        <div class="library-card">
+          <span class="library-card-badge http">HTTP</span>
+          <h4>Axios</h4>
+          <p>Makes it easy to get data from servers (APIs). Send requests and handle responses with clean, simple code.</p>
+          <div class="install-cmd">npm install axios</div>
+        </div>
+        <div class="library-card">
+          <span class="library-card-badge ui">UI</span>
+          <h4>Material UI (MUI)</h4>
+          <p>Beautiful, ready-made components (buttons, modals, forms) that follow Google's Material Design. Saves hours of styling work.</p>
+          <div class="install-cmd">npm install @mui/material @emotion/react @emotion/styled</div>
+        </div>
+        <div class="library-card">
+          <span class="library-card-badge forms">Forms</span>
+          <h4>React Hook Form</h4>
+          <p>Handles form input, validation, and errors with minimal code. Super fast and lightweight.</p>
+          <div class="install-cmd">npm install react-hook-form</div>
+        </div>
+        <div class="library-card">
+          <span class="library-card-badge http">Data</span>
+          <h4>TanStack Query</h4>
+          <p>Fetches, caches, and syncs server data automatically. No more manual loading states — it handles everything.</p>
+          <div class="install-cmd">npm install @tanstack/react-query</div>
+        </div>
+      </div>
+
+      <h3>How to Find &amp; Choose Libraries</h3>
+      <p>The npm registry has over <strong>2 million packages</strong>. Here's how to pick the right one:</p>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Check This</th>
+            <th>Why It Matters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>⭐ GitHub Stars</td>
+            <td>More stars = more developers trust and use it</td>
+          </tr>
+          <tr>
+            <td>📅 Last Updated</td>
+            <td>If it hasn't been updated in years, it might be abandoned</td>
+          </tr>
+          <tr>
+            <td>📥 Weekly Downloads</td>
+            <td>High downloads mean it's actively used in production apps</td>
+          </tr>
+          <tr>
+            <td>📖 Documentation</td>
+            <td>Good docs = easier to learn and use</td>
+          </tr>
+          <tr>
+            <td>📦 Bundle Size</td>
+            <td>Smaller is better — big libraries slow down your app</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Exercise 6 -->
+      <div class="exercise" id="exercise6">
+        <div class="exercise-header">
+          <span class="exercise-badge">Exercise</span>
+          <span class="exercise-title">Match the Library</span>
+        </div>
+        <div class="exercise-body">
+          <p>Which library would you use to add <strong>multiple pages</strong> (like Home, About, Contact) to your React app?</p>
+          <div class="exercise-options" data-exercise="6" data-correct="2">
+            <div class="exercise-option" data-value="1">
+              <span class="option-marker">A</span>
+              <span>Axios</span>
+            </div>
+            <div class="exercise-option" data-value="2">
+              <span class="option-marker">B</span>
+              <span>React Router</span>
+            </div>
+            <div class="exercise-option" data-value="3">
+              <span class="option-marker">C</span>
+              <span>Zustand</span>
+            </div>
+            <div class="exercise-option" data-value="4">
+              <span class="option-marker">D</span>
+              <span>React Hook Form</span>
+            </div>
+          </div>
+          <button class="exercise-check-btn" disabled>Check Answer</button>
+          <div class="exercise-feedback"></div>
+        </div>
+      </div>
+
+      <div class="section-nav">
+        <a href="#components" class="section-nav-btn prev">← Previous: Components</a>
+        <a href="#importing" class="section-nav-btn">Next: Importing Libraries →</a>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         SECTION 7 — IMPORTING & USING LIBRARIES
+         ========================================================== -->
+    <section class="section" id="importing">
+      <div class="section-header">
+        <div class="section-number">CHAPTER 7</div>
+        <h2>Importing &amp; Using Libraries</h2>
+        <p>You know what libraries are — now let's learn how to actually <strong>install them and use them</strong> in your code. It's a simple 3-step process: install → import → use.</p>
+      </div>
+
+      <h3>🎬 The Import Flow</h3>
+      <p>Here's how code flows from an npm package into your component:</p>
+
+      <div class="animation-panel">
+        <div class="panel-header">
+          <div class="panel-title">📦 How Importing Works</div>
+        </div>
+        <div class="panel-body">
+          <div class="import-flow">
+            <div class="import-box package">npm<br/>Package</div>
+            <div class="import-arrow">→</div>
+            <div class="import-box file">node_modules/</div>
+            <div class="import-arrow">→</div>
+            <div class="import-box component">import in<br/>Your Code</div>
+            <div class="import-arrow">→</div>
+            <div class="import-box" style="background:rgba(255,203,107,0.12);border:2px solid #ffcb6b;color:#ffcb6b">Use in<br/>Component</div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Step 1 — Install the Library</h3>
+      <p>Use <span class="inline-code">npm install</span> (or the shortcut <span class="inline-code">npm i</span>) in your terminal:</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+          <span class="code-language">Terminal</span>
+          <button class="code-copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <div class="code-body"><pre><span class="comment"># Install one library</span>
+npm install axios
+
+<span class="comment"># Install multiple at once</span>
+npm install react-router-dom zustand
+
+<span class="comment"># Shortcut — "i" means "install"</span>
+npm i axios</pre></div>
+      </div>
+
+      <h3>Step 2 — Import in Your Code</h3>
+      <p>At the top of your file, use the <span class="inline-code">import</span> keyword to bring in the library:</p>
+
+      <div class="tabs">
+        <div class="tabs-header">
+          <button class="tab-btn active" onclick="switchTab(event, 'tab-default')">Default Import</button>
+          <button class="tab-btn" onclick="switchTab(event, 'tab-named')">Named Import</button>
+          <button class="tab-btn" onclick="switchTab(event, 'tab-both')">Both Together</button>
+        </div>
+        <div class="tab-content active" id="tab-default">
+          <p style="margin-bottom:var(--space-md)"><strong>Default import</strong> — the library exports one main thing:</p>
+          <div class="code-block" style="margin:0">
+            <div class="code-header">
+              <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+              <span class="code-language">JSX</span>
+              <button class="code-copy-btn" onclick="copyCode(this)">📋 Copy</button>
+            </div>
+            <div class="code-body"><pre><span class="comment">// Default import — you can name it anything</span>
+<span class="keyword">import</span> <span class="variable">axios</span> <span class="keyword">from</span> <span class="string">'axios'</span>;
+
+<span class="comment">// Use it</span>
+<span class="keyword">const</span> <span class="variable">response</span> = <span class="keyword">await</span> <span class="variable">axios</span>.<span class="function">get</span>(<span class="string">'https://api.example.com/data'</span>);</pre></div>
+          </div>
+        </div>
+        <div class="tab-content" id="tab-named">
+          <p style="margin-bottom:var(--space-md)"><strong>Named import</strong> — pick specific pieces from a library:</p>
+          <div class="code-block" style="margin:0">
+            <div class="code-header">
+              <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+              <span class="code-language">JSX</span>
+              <button class="code-copy-btn" onclick="copyCode(this)">📋 Copy</button>
+            </div>
+            <div class="code-body"><pre><span class="comment">// Named import — use curly braces { }</span>
+<span class="keyword">import</span> { <span class="function">BrowserRouter</span>, <span class="function">Route</span>, <span class="function">Routes</span> } <span class="keyword">from</span> <span class="string">'react-router-dom'</span>;
+
+<span class="comment">// React's own hooks are also named imports</span>
+<span class="keyword">import</span> { <span class="function">useState</span>, <span class="function">useEffect</span> } <span class="keyword">from</span> <span class="string">'react'</span>;</pre></div>
+          </div>
+        </div>
+        <div class="tab-content" id="tab-both">
+          <p style="margin-bottom:var(--space-md)"><strong>Both</strong> — default and named together:</p>
+          <div class="code-block" style="margin:0">
+            <div class="code-header">
+              <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+              <span class="code-language">JSX</span>
+              <button class="code-copy-btn" onclick="copyCode(this)">📋 Copy</button>
+            </div>
+            <div class="code-body"><pre><span class="comment">// Default + named imports from the same library</span>
+<span class="keyword">import</span> <span class="variable">React</span>, { <span class="function">useState</span>, <span class="function">useEffect</span> } <span class="keyword">from</span> <span class="string">'react'</span>;</pre></div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Step 3 — Use in Your Component</h3>
+      <p>Here's a complete, real-world example using <strong>Axios</strong> to fetch data from an API:</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+          <span class="code-language">src/UserList.jsx</span>
+          <button class="code-copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <div class="code-body"><pre><span class="keyword">import</span> { <span class="function">useState</span>, <span class="function">useEffect</span> } <span class="keyword">from</span> <span class="string">'react'</span>;
+<span class="keyword">import</span> <span class="variable">axios</span> <span class="keyword">from</span> <span class="string">'axios'</span>;
+
+<span class="keyword">function</span> <span class="function">UserList</span>() {
+  <span class="keyword">const</span> [<span class="variable">users</span>, <span class="function">setUsers</span>] = <span class="function">useState</span>([]);
+  <span class="keyword">const</span> [<span class="variable">loading</span>, <span class="function">setLoading</span>] = <span class="function">useState</span>(<span class="keyword">true</span>);
+
+  <span class="function">useEffect</span>(() <span class="operator">=&gt;</span> {
+    <span class="comment">// Fetch users when the component first appears</span>
+    <span class="variable">axios</span>.<span class="function">get</span>(<span class="string">'https://jsonplaceholder.typicode.com/users'</span>)
+      .<span class="function">then</span>(<span class="variable">response</span> <span class="operator">=&gt;</span> {
+        <span class="function">setUsers</span>(<span class="variable">response</span>.<span class="variable">data</span>);
+        <span class="function">setLoading</span>(<span class="keyword">false</span>);
+      })
+      .<span class="function">catch</span>(<span class="variable">error</span> <span class="operator">=&gt;</span> {
+        <span class="builtin">console</span>.<span class="function">error</span>(<span class="string">'Error:'</span>, <span class="variable">error</span>);
+        <span class="function">setLoading</span>(<span class="keyword">false</span>);
+      });
+  }, []); <span class="comment">// [] means: run only once</span>
+
+  <span class="keyword">if</span> (<span class="variable">loading</span>) <span class="keyword">return</span> <span class="tag">&lt;p&gt;</span>Loading users...<span class="tag">&lt;/p&gt;</span>;
+
+  <span class="keyword">return</span> (
+    <span class="tag">&lt;ul&gt;</span>
+      {<span class="variable">users</span>.<span class="function">map</span>(<span class="variable">user</span> <span class="operator">=&gt;</span> (
+        <span class="tag">&lt;li</span> <span class="attr">key</span>={<span class="variable">user</span>.<span class="variable">id</span>}<span class="tag">&gt;</span>{<span class="variable">user</span>.<span class="variable">name</span>}<span class="tag">&lt;/li&gt;</span>
+      ))}
+    <span class="tag">&lt;/ul&gt;</span>
+  );
+}
+
+<span class="keyword">export default</span> <span class="function">UserList</span>;</pre></div>
+      </div>
+
+      <!-- Live API fetch demo -->
+      <div class="demo-panel">
+        <div class="demo-header">
+          <span class="demo-icon">🌐</span>
+          Live Demo — Fetching Data from an API
+        </div>
+        <div class="demo-body">
+          <p style="font-size:0.9rem;color:var(--text-secondary);margin-bottom:var(--space-md)">Click the button to fetch real user data from an API — just like the code above!</p>
+          <button class="btn btn-primary" id="fetchUsersBtn">🔄 Fetch Users</button>
+          <div class="demo-result" id="fetchResult" style="margin-top:var(--space-md);min-height:60px">
+            <span style="color:var(--text-tertiary);font-size:0.88rem">Click the button to load data...</span>
+          </div>
+        </div>
+      </div>
+
+      <h3>Importing Your Own Components</h3>
+      <p>You can also import components you made yourself. Use <strong>relative paths</strong> (starting with <span class="inline-code">./</span> or <span class="inline-code">../</span>):</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+          <span class="code-language">src/App.jsx</span>
+          <button class="code-copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <div class="code-body"><pre><span class="comment">// Importing your own components</span>
+<span class="keyword">import</span> <span class="function">Header</span> <span class="keyword">from</span> <span class="string">'./components/Header'</span>;
+<span class="keyword">import</span> <span class="function">UserCard</span> <span class="keyword">from</span> <span class="string">'./components/UserCard'</span>;
+<span class="keyword">import</span> <span class="function">Footer</span> <span class="keyword">from</span> <span class="string">'./components/Footer'</span>;
+
+<span class="comment">// Importing a CSS file</span>
+<span class="keyword">import</span> <span class="string">'./App.css'</span>;
+
+<span class="keyword">function</span> <span class="function">App</span>() {
+  <span class="keyword">return</span> (
+    <span class="tag">&lt;div&gt;</span>
+      <span class="tag">&lt;Header</span> <span class="tag">/&gt;</span>
+      <span class="tag">&lt;UserCard</span> <span class="attr">name</span>=<span class="string">"Alice"</span> <span class="attr">role</span>=<span class="string">"Developer"</span> <span class="tag">/&gt;</span>
+      <span class="tag">&lt;Footer</span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  );
+}
+
+<span class="keyword">export default</span> <span class="function">App</span>;</pre></div>
+      </div>
+
+      <div class="callout tip">
+        <div class="callout-icon">💡</div>
+        <div class="callout-content">
+          <strong>Import Rules Cheat Sheet</strong>
+          <p>
+            📦 <strong>npm packages</strong>: <span class="inline-code">import axios from 'axios'</span> — no path, just the name<br/>
+            📁 <strong>Your own files</strong>: <span class="inline-code">import Header from './Header'</span> — use <span class="inline-code">./</span> for current folder<br/>
+            🎨 <strong>CSS files</strong>: <span class="inline-code">import './styles.css'</span> — no variable name needed
+          </p>
+        </div>
+      </div>
+
+      <h3>Example — Using React Router for Pages</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+          <span class="code-language">src/App.jsx — with React Router</span>
+          <button class="code-copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <div class="code-body"><pre><span class="keyword">import</span> { <span class="function">BrowserRouter</span>, <span class="function">Routes</span>, <span class="function">Route</span>, <span class="function">Link</span> } <span class="keyword">from</span> <span class="string">'react-router-dom'</span>;
+<span class="keyword">import</span> <span class="function">Home</span> <span class="keyword">from</span> <span class="string">'./pages/Home'</span>;
+<span class="keyword">import</span> <span class="function">About</span> <span class="keyword">from</span> <span class="string">'./pages/About'</span>;
+
+<span class="keyword">function</span> <span class="function">App</span>() {
+  <span class="keyword">return</span> (
+    <span class="tag">&lt;BrowserRouter&gt;</span>
+      <span class="tag">&lt;nav&gt;</span>
+        <span class="tag">&lt;Link</span> <span class="attr">to</span>=<span class="string">"/"</span><span class="tag">&gt;</span>Home<span class="tag">&lt;/Link&gt;</span>
+        <span class="tag">&lt;Link</span> <span class="attr">to</span>=<span class="string">"/about"</span><span class="tag">&gt;</span>About<span class="tag">&lt;/Link&gt;</span>
+      <span class="tag">&lt;/nav&gt;</span>
+
+      <span class="tag">&lt;Routes&gt;</span>
+        <span class="tag">&lt;Route</span> <span class="attr">path</span>=<span class="string">"/"</span> <span class="attr">element</span>={<span class="tag">&lt;Home /&gt;</span>} <span class="tag">/&gt;</span>
+        <span class="tag">&lt;Route</span> <span class="attr">path</span>=<span class="string">"/about"</span> <span class="attr">element</span>={<span class="tag">&lt;About /&gt;</span>} <span class="tag">/&gt;</span>
+      <span class="tag">&lt;/Routes&gt;</span>
+    <span class="tag">&lt;/BrowserRouter&gt;</span>
+  );
+}</pre></div>
+      </div>
+
+      <!-- Exercise 7 -->
+      <div class="exercise" id="exercise7">
+        <div class="exercise-header">
+          <span class="exercise-badge">Exercise</span>
+          <span class="exercise-title">Import Syntax</span>
+        </div>
+        <div class="exercise-body">
+          <p>How would you import the <span class="inline-code">useState</span> hook from React?</p>
+          <div class="exercise-options" data-exercise="7" data-correct="1">
+            <div class="exercise-option" data-value="1">
+              <span class="option-marker">A</span>
+              <span><code>import { useState } from 'react';</code></span>
+            </div>
+            <div class="exercise-option" data-value="2">
+              <span class="option-marker">B</span>
+              <span><code>import useState from 'react';</code></span>
+            </div>
+            <div class="exercise-option" data-value="3">
+              <span class="option-marker">C</span>
+              <span><code>require('react').useState;</code></span>
+            </div>
+            <div class="exercise-option" data-value="4">
+              <span class="option-marker">D</span>
+              <span><code>import * as useState from 'react';</code></span>
+            </div>
+          </div>
+          <button class="exercise-check-btn" disabled>Check Answer</button>
+          <div class="exercise-feedback"></div>
+        </div>
+      </div>
+
+      <div class="section-nav">
+        <a href="#libraries" class="section-nav-btn prev">← Previous: React Libraries</a>
+        <div></div>
+      </div>
+
+      <!-- Completion Message -->
+      <div style="text-align:center;margin-top:var(--space-3xl);padding:var(--space-2xl);background:linear-gradient(135deg,rgba(108,99,255,0.08),rgba(0,210,255,0.08));border-radius:var(--radius-xl);">
+        <h2 style="font-size:2rem;margin-bottom:var(--space-md)">🎉 Congratulations!</h2>
+        <p style="font-size:1.1rem;color:var(--text-secondary);max-width:550px;margin:0 auto var(--space-lg)">You've completed the React Guide! You now understand the core concepts — components, props, state, libraries, and how to import them. Keep building and experimenting!</p>
+        <a href="#hero" class="btn btn-primary" style="font-size:1rem;padding:var(--space-md) var(--space-2xl)">🔄 Review from Start</a>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+      <p>
+        Built with ❤️ for learning
+        <svg class="react-icon" viewBox="-11.5 -10.232 23 20.463" xmlns="http://www.w3.org/2000/svg" style="width:20px;height:20px"><circle r="2.05" fill="#61dafb"/><g stroke="#61dafb" stroke-width="1" fill="none"><ellipse rx="11" ry="4.2"/><ellipse rx="11" ry="4.2" transform="rotate(60)"/><ellipse rx="11" ry="4.2" transform="rotate(120)"/></g></svg>
+        React Guide — 2024
+      </p>
+    </footer>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

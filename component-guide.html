@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A complete mentor guide to building a React application from scratch with Header, Body, and Footer components." />
+  <title>React Components — The Ultimate Guide</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚛️</text></svg>" />
+</head>
+<body>
+
+  <!-- ========== TOPBAR ========== -->
+  <header class="topbar" id="topbar">
+    <div style="display:flex;align-items:center;gap:12px">
+      <a href="index.html" class="topbar-brand">
+        <svg class="react-icon" viewBox="-11.5 -10.232 23 20.463" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle r="2.05" fill="#61dafb"/>
+          <g stroke="#61dafb" stroke-width="1" fill="none">
+            <ellipse rx="11" ry="4.2"/>
+            <ellipse rx="11" ry="4.2" transform="rotate(60)"/>
+            <ellipse rx="11" ry="4.2" transform="rotate(120)"/>
+          </g>
+        </svg>
+        React Guide
+      </a>
+    </div>
+    <div class="topbar-actions">
+      <a href="tanglish-guide.html" class="btn btn-outline btn-sm" style="margin-right: var(--space-md);">🔥 Tanglish Guide</a>
+      <a href="details.html" class="btn btn-outline btn-sm" style="margin-right: var(--space-md);">📖 Deep Dive</a>
+      <a href="index.html" class="btn btn-outline btn-sm" style="margin-right: var(--space-md);">← Back to Main Guide</a>
+      <div class="theme-toggle" id="themeToggle" role="button" aria-label="Toggle dark mode" tabindex="0">
+        <div class="theme-toggle-knob">
+          <span id="themeIcon">☀️</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content" style="margin-left: 0;">
+
+    <section class="hero" id="hero" style="min-height: 450px;">
+      <div class="hero-content">
+        <div class="hero-badge">🧩 Senior Mentor Guide</div>
+        <h1>Building a <span class="gradient-text">Complete React App</span></h1>
+        <p>A step-by-step masterclass on building a React application from scratch using a clean, reusable, component-based architecture with separate Header, Body, and Footer components.</p>
+      </div>
+    </section>
+
+    <!-- 1. Project Requirements & Structure -->
+    <section class="section visible">
+      <div class="section-header">
+        <div class="section-number">Part 1</div>
+        <h2>Project Requirements & Structure</h2>
+      </div>
+      
+      <p>We are going to build a React application with three separate components: <strong>Header</strong>, <strong>Body</strong>, and <strong>Footer</strong>. We will then integrate them into our main <code>App.jsx</code> file.</p>
+      
+      <h3>Complete Project Structure</h3>
+      <p>Before writing code, it's essential to understand how our files will be organized. Here is the exact folder structure we will create:</p>
+      
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+          <span class="code-language">Directory Structure</span>
+        </div>
+        <div class="code-body"><pre>my-react-app/
+├── public/                 <span class="comment">&lt;-- Static files (like favicons)</span>
+├── src/                    <span class="comment">&lt;-- All your React code goes here</span>
+│   ├── components/         <span class="comment">&lt;-- Folder for reusable components</span>
+│   │   ├── Header.jsx      <span class="comment">&lt;-- Header component logic</span>
+│   │   ├── Header.css      <span class="comment">&lt;-- Header component styles</span>
+│   │   ├── Body.jsx        <span class="comment">&lt;-- Body component logic</span>
+│   │   ├── Body.css        <span class="comment">&lt;-- Body component styles</span>
+│   │   ├── Footer.jsx      <span class="comment">&lt;-- Footer component logic</span>
+│   │   └── Footer.css      <span class="comment">&lt;-- Footer component styles</span>
+│   ├── App.jsx             <span class="comment">&lt;-- The main parent component</span>
+│   ├── App.css             <span class="comment">&lt;-- App layout styles</span>
+│   ├── index.css           <span class="comment">&lt;-- Global CSS rules</span>
+│   └── main.jsx            <span class="comment">&lt;-- React entry point</span>
+├── package.json            <span class="comment">&lt;-- Project dependencies</span>
+└── vite.config.js          <span class="comment">&lt;-- Vite bundler configuration</span></pre></div>
+      </div>
+    </section>
+
+    <!-- 2. Step 1: Create the React Project -->
+    <section class="section visible">
+      <div class="section-header">
+        <div class="section-number">Step 1</div>
+        <h2>Create the React Project</h2>
+      </div>
+
+      <p>First, make sure you have <strong>Node.js</strong> installed (download the LTS version from nodejs.org). Node.js allows us to run React's build tools.</p>
+      <p>Open your Terminal or Command Prompt and run the following commands sequentially:</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+          <span class="code-language">Terminal</span>
+          <button class="code-copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <div class="code-body"><pre><span class="comment"># 1. Create a React project using Vite</span>
+npm create vite@latest my-react-app -- --template react
+
+<span class="comment"># 2. Navigate into the new project directory</span>
+cd my-react-app
+
+<span class="comment"># 3. Install required dependencies</span>
+npm install
+
+<span class="comment"># 4. Start the local development server</span>
+npm run dev</pre></div>
+      </div>
+      
+      <p>Now, open <code>http://localhost:5173</code> in your browser to see the default Vite starter page. Keep the terminal running in the background while you code!</p>
+    </section>
+
+    <!-- 3. Step 2: Create the Header Component -->
+    <section class="section visible">
+      <div class="section-header">
+        <div class="section-number">Step 2</div>
+        <h2>Create the Header Component</h2>
+      </div>
+
+      <p>A React component is simply a JavaScript function that returns JSX (HTML-like syntax). We separate our UI into components to keep code clean and reusable.</p>
+      
+      <h3>1. Create the Component File</h3>
+      <p><strong>File to create:</strong> <code>src/components/Header.jsx</code></p>
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+          <span class="code-language">src/components/Header.jsx</span>
+          <button class="code-copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <div class="code-body"><pre><span class="keyword">function</span> <span class="function">Header</span>() {
+  <span class="comment">// Returns JSX to define the UI structure</span>
+  <span class="keyword">return</span> (
+    <span class="tag">&lt;header</span> <span class="attr">className</span>=<span class="string">"header-container"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;h1&gt;</span>My First React App<span class="tag">&lt;/h1&gt;</span>
+      <span class="tag">&lt;nav&gt;</span>
+        <span class="tag">&lt;ul</span> <span class="attr">className</span>=<span class="string">"nav-links"</span><span class="tag">&gt;</span>
+          <span class="tag">&lt;li&gt;&lt;a</span> <span class="attr">href</span>=<span class="string">"#home"</span><span class="tag">&gt;</span>Home<span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+          <span class="tag">&lt;li&gt;&lt;a</span> <span class="attr">href</span>=<span class="string">"#about"</span><span class="tag">&gt;</span>About<span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+          <span class="tag">&lt;li&gt;&lt;a</span> <span class="attr">href</span>=<span class="string">"#contact"</span><span class="tag">&gt;</span>Contact<span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="tag">&lt;/ul&gt;</span>
+      <span class="tag">&lt;/nav&gt;</span>
+    <span class="tag">&lt;/header&gt;</span>
+  );
+}
+
+<span class="comment">// Export the component so it can be imported elsewhere</span>
+<span class="keyword">export default</span> <span class="function">Header</span>;</pre></div>
+      </div>
+
+      <h3>2. Create the Stylesheet</h3>
+      <p><strong>File to create:</strong> <code>src/components/Header.css</code></p>
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+          <span class="code-language">src/components/Header.css</span>
+          <button class="code-copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <div class="code-body"><pre><span class="comment">/* Styles specifically for the Header component */</span>
+<span class="tag">.header-container</span> {
+  <span class="attr">background-color</span>: <span class="value">#282c34</span>;
+  <span class="attr">color</span>: <span class="value">white</span>;
+  <span class="attr">padding</span>: <span class="value">20px</span>;
+  <span class="attr">display</span>: <span class="value">flex</span>;
+  <span class="attr">justify-content</span>: <span class="value">space-between</span>;
+  <span class="attr">align-items</span>: <span class="value">center</span>;
+}
+
+<span class="tag">.header-container h1</span> {
+  <span class="attr">margin</span>: <span class="value">0</span>;
+  <span class="attr">font-size</span>: <span class="value">1.5rem</span>;
+}
+
+<span class="tag">.nav-links</span> {
+  <span class="attr">list-style</span>: <span class="value">none</span>;
+  <span class="attr">display</span>: <span class="value">flex</span>;
+  <span class="attr">gap</span>: <span class="value">20px</span>;
+  <span class="attr">margin</span>: <span class="value">0</span>;
+  <span class="attr">padding</span>: <span class="value">0</span>;
+}
+
+<span class="tag">.nav-links a</span> {
+  <span class="attr">color</span>: <span class="value">#61dafb</span>;
+  <span class="attr">text-decoration</span>: <span class="value">none</span>;
+  <span class="attr">font-weight</span>: <span class="value">bold</span>;
+}
+
+<span class="tag">.nav-links a:hover</span> {
+  <span class="attr">color</span>: <span class="value">white</span>;
+}</pre></div>
+      </div>
+      <p><em>Notice how we use <code>className</code> in JSX instead of <code>class</code>. Since JSX is basically JavaScript, and <code>class</code> is a reserved JS keyword, React requires <code>className</code>.</em></p>
+    </section>
+
+    <!-- 4. Step 3: Create the Body Component -->
+    <section class="section visible">
+      <div class="section-header">
+        <div class="section-number">Step 3</div>
+        <h2>Create the Body Component</h2>
+      </div>
+
+      <p>The Body component will hold our main page content. Unlike the header, we'll wrap this in a semantic <code>&lt;main&gt;</code> HTML tag.</p>
+
+      <h3>1. Create the Component File</h3>
+      <p><strong>File to create:</strong> <code>src/components/Body.jsx</code></p>
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+          <span class="code-language">src/components/Body.jsx</span>
+          <button class="code-copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <div class="code-body"><pre><span class="keyword">function</span> <span class="function">Body</span>() {
+  <span class="keyword">return</span> (
+    <span class="tag">&lt;main</span> <span class="attr">className</span>=<span class="string">"body-container"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;h2&gt;</span>Welcome to Component-Based Architecture<span class="tag">&lt;/h2&gt;</span>
+      <span class="tag">&lt;p&gt;</span>
+        React allows us to break our user interface down into smaller, 
+        reusable pieces called components. Right now, you are looking at the 
+        <span class="tag">&lt;strong&gt;</span> Body <span class="tag">&lt;/strong&gt;</span> component!
+      <span class="tag">&lt;/p&gt;</span>
+      
+      <span class="tag">&lt;div</span> <span class="attr">className</span>=<span class="string">"card-grid"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attr">className</span>=<span class="string">"card"</span><span class="tag">&gt;</span>
+          <span class="tag">&lt;h3&gt;</span>Fast<span class="tag">&lt;/h3&gt;</span>
+          <span class="tag">&lt;p&gt;</span>React is incredibly fast thanks to the Virtual DOM.<span class="tag">&lt;/p&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attr">className</span>=<span class="string">"card"</span><span class="tag">&gt;</span>
+          <span class="tag">&lt;h3&gt;</span>Reusable<span class="tag">&lt;/h3&gt;</span>
+          <span class="tag">&lt;p&gt;</span>Build a component once, use it everywhere.<span class="tag">&lt;/p&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/main&gt;</span>
+  );
+}
+
+<span class="keyword">export default</span> <span class="function">Body</span>;</pre></div>
+      </div>
+
+      <h3>2. Create the Stylesheet</h3>
+      <p><strong>File to create:</strong> <code>src/components/Body.css</code></p>
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+          <span class="code-language">src/components/Body.css</span>
+          <button class="code-copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <div class="code-body"><pre><span class="tag">.body-container</span> {
+  <span class="attr">padding</span>: <span class="value">40px 20px</span>;
+  <span class="attr">text-align</span>: <span class="value">center</span>;
+  <span class="attr">flex-grow</span>: <span class="value">1</span>; <span class="comment">/* Pushes the footer down when page is short */</span>
+}
+
+<span class="tag">.body-container h2</span> {
+  <span class="attr">color</span>: <span class="value">#333</span>;
+  <span class="attr">margin-bottom</span>: <span class="value">20px</span>;
+}
+
+<span class="tag">.card-grid</span> {
+  <span class="attr">display</span>: <span class="value">flex</span>;
+  <span class="attr">justify-content</span>: <span class="value">center</span>;
+  <span class="attr">gap</span>: <span class="value">20px</span>;
+  <span class="attr">margin-top</span>: <span class="value">30px</span>;
+}
+
+<span class="tag">.card</span> {
+  <span class="attr">background-color</span>: <span class="value">white</span>;
+  <span class="attr">border</span>: <span class="value">1px solid #ddd</span>;
+  <span class="attr">border-radius</span>: <span class="value">8px</span>;
+  <span class="attr">padding</span>: <span class="value">20px</span>;
+  <span class="attr">width</span>: <span class="value">250px</span>;
+  <span class="attr">box-shadow</span>: <span class="value">0 4px 6px rgba(0,0,0,0.1)</span>;
+}
+
+<span class="tag">.card h3</span> {
+  <span class="attr">color</span>: <span class="value">#61dafb</span>;
+  <span class="attr">margin-top</span>: <span class="value">0</span>;
+}</pre></div>
+      </div>
+    </section>
+
+    <!-- 5. Step 4: Create the Footer Component -->
+    <section class="section visible">
+      <div class="section-header">
+        <div class="section-number">Step 4</div>
+        <h2>Create the Footer Component</h2>
+      </div>
+
+      <p>Finally, we'll build the footer. Here we will inject real JavaScript logic (getting the current year) directly into the JSX using curly braces <code>{}</code>.</p>
+
+      <h3>1. Create the Component File</h3>
+      <p><strong>File to create:</strong> <code>src/components/Footer.jsx</code></p>
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+          <span class="code-language">src/components/Footer.jsx</span>
+          <button class="code-copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <div class="code-body"><pre><span class="keyword">function</span> <span class="function">Footer</span>() {
+  <span class="comment">// JavaScript logic written before the return statement</span>
+  <span class="keyword">const</span> <span class="variable">currentYear</span> = <span class="keyword">new</span> <span class="function">Date</span>().<span class="function">getFullYear</span>();
+
+  <span class="keyword">return</span> (
+    <span class="tag">&lt;footer</span> <span class="attr">className</span>=<span class="string">"footer-container"</span><span class="tag">&gt;</span>
+      <span class="comment">{/* We use {} to evaluate JavaScript variables inside JSX */}</span>
+      <span class="tag">&lt;p&gt;</span>&amp;copy; {<span class="variable">currentYear</span>} My React App. All rights reserved.<span class="tag">&lt;/p&gt;</span>
+      <span class="tag">&lt;p&gt;</span>Built with ❤️ and React.<span class="tag">&lt;/p&gt;</span>
+    <span class="tag">&lt;/footer&gt;</span>
+  );
+}
+
+<span class="keyword">export default</span> <span class="function">Footer</span>;</pre></div>
+      </div>
+
+      <h3>2. Create the Stylesheet</h3>
+      <p><strong>File to create:</strong> <code>src/components/Footer.css</code></p>
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+          <span class="code-language">src/components/Footer.css</span>
+          <button class="code-copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <div class="code-body"><pre><span class="tag">.footer-container</span> {
+  <span class="attr">background-color</span>: <span class="value">#282c34</span>;
+  <span class="attr">color</span>: <span class="value">white</span>;
+  <span class="attr">text-align</span>: <span class="value">center</span>;
+  <span class="attr">padding</span>: <span class="value">20px</span>;
+  <span class="attr">margin-top</span>: <span class="value">auto</span>; <span class="comment">/* Keeps it at the bottom */</span>
+}
+
+<span class="tag">.footer-container p</span> {
+  <span class="attr">margin</span>: <span class="value">5px 0</span>;
+  <span class="attr">font-size</span>: <span class="value">0.9rem</span>;
+}</pre></div>
+      </div>
+    </section>
+
+    <!-- 6. Step 5: Integrate All Components -->
+    <section class="section visible">
+      <div class="section-header">
+        <div class="section-number">Step 5</div>
+        <h2>Integrate Components into App.jsx</h2>
+      </div>
+
+      <p>Now we bring our three independent pieces into the central parent component, <code>App.jsx</code>.</p>
+      <p><strong>File to update:</strong> <code>src/App.jsx</code></p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+          <span class="code-language">src/App.jsx</span>
+          <button class="code-copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <div class="code-body"><pre><span class="comment">// 1. Import all component CSS files</span>
+<span class="keyword">import</span> <span class="string">'./App.css'</span>;
+<span class="keyword">import</span> <span class="string">'./components/Header.css'</span>;
+<span class="keyword">import</span> <span class="string">'./components/Body.css'</span>;
+<span class="keyword">import</span> <span class="string">'./components/Footer.css'</span>;
+
+<span class="comment">// 2. Import the React components</span>
+<span class="keyword">import</span> <span class="function">Header</span> <span class="keyword">from</span> <span class="string">'./components/Header'</span>;
+<span class="keyword">import</span> <span class="function">Body</span> <span class="keyword">from</span> <span class="string">'./components/Body'</span>;
+<span class="keyword">import</span> <span class="function">Footer</span> <span class="keyword">from</span> <span class="string">'./components/Footer'</span>;
+
+<span class="keyword">function</span> <span class="function">App</span>() {
+  <span class="keyword">return</span> (
+    <span class="comment">&lt;!-- Wrap everything in a main container for layout --&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">className</span>=<span class="string">"app-layout"</span><span class="tag">&gt;</span>
+      <span class="comment">{/* 3. Render the components in the correct order */}</span>
+      <span class="tag">&lt;Header /&gt;</span>
+      <span class="tag">&lt;Body /&gt;</span>
+      <span class="tag">&lt;Footer /&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  );
+}
+
+<span class="keyword">export default</span> <span class="function">App</span>;</pre></div>
+      </div>
+      
+      <p>Notice how we use component tags like <code>&lt;Header /&gt;</code>. These are self-closing tags. When React sees them, it executes the code from the imported file and renders the resulting UI here.</p>
+    </section>
+
+    <!-- 7. Step 6: Global Styles -->
+    <section class="section visible">
+      <div class="section-header">
+        <div class="section-number">Step 6</div>
+        <h2>Update App.css and index.css</h2>
+      </div>
+
+      <p>We need to apply global styling to make the app look clean and responsive.</p>
+
+      <h3>1. App Layout Styling</h3>
+      <p><strong>File to update:</strong> <code>src/App.css</code></p>
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+          <span class="code-language">src/App.css</span>
+          <button class="code-copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <div class="code-body"><pre><span class="comment">/* App-level layout */</span>
+<span class="tag">.app-layout</span> {
+  <span class="attr">display</span>: <span class="value">flex</span>;
+  <span class="attr">flex-direction</span>: <span class="value">column</span>;
+  <span class="attr">min-height</span>: <span class="value">100vh</span>; <span class="comment">/* 100% of the screen height */</span>
+}
+
+<span class="comment">/* Make the layout responsive on smaller screens */</span>
+<span class="keyword">@media</span> (<span class="attr">max-width</span>: <span class="value">600px</span>) {
+  <span class="tag">.card-grid</span> {
+    <span class="attr">flex-direction</span>: <span class="value">column</span>;
+    <span class="attr">align-items</span>: <span class="value">center</span>;
+  }
+}</pre></div>
+      </div>
+
+      <h3>2. Global CSS Reset</h3>
+      <p><strong>File to update:</strong> <code>src/index.css</code></p>
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+          <span class="code-language">src/index.css</span>
+          <button class="code-copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <div class="code-body"><pre><span class="comment">/* Global Reset */</span>
+<span class="tag">*</span> {
+  <span class="attr">box-sizing</span>: <span class="value">border-box</span>;
+  <span class="attr">margin</span>: <span class="value">0</span>;
+  <span class="attr">padding</span>: <span class="value">0</span>;
+}
+
+<span class="tag">body</span> {
+  <span class="attr">font-family</span>: <span class="value">'Segoe UI', Tahoma, Geneva, Verdana, sans-serif</span>;
+  <span class="attr">background-color</span>: <span class="value">#f4f4f9</span>;
+  <span class="attr">color</span>: <span class="value">#333</span>;
+}</pre></div>
+      </div>
+      <p>We separate our CSS to avoid duplicated styles. <code>index.css</code> is for global changes, while component files only style their own elements.</p>
+    </section>
+
+    <!-- 8. Step 7: Check main.jsx -->
+    <section class="section visible">
+      <div class="section-header">
+        <div class="section-number">Step 7</div>
+        <h2>Check main.jsx</h2>
+      </div>
+
+      <p>This file bridges React with the actual browser. <strong>You don't need to change anything here.</strong></p>
+      
+      <p><strong>File:</strong> <code>src/main.jsx</code></p>
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+          <span class="code-language">src/main.jsx</span>
+        </div>
+        <div class="code-body"><pre><span class="keyword">import</span> <span class="function">React</span> <span class="keyword">from</span> <span class="string">'react'</span>
+<span class="keyword">import</span> <span class="function">ReactDOM</span> <span class="keyword">from</span> <span class="string">'react-dom/client'</span>
+<span class="keyword">import</span> <span class="function">App</span> <span class="keyword">from</span> <span class="string">'./App.jsx'</span>
+<span class="keyword">import</span> <span class="string">'./index.css'</span>
+
+<span class="function">ReactDOM</span>.<span class="function">createRoot</span>(document.<span class="function">getElementById</span>(<span class="string">'root'</span>)).<span class="function">render</span>(
+  <span class="tag">&lt;React.StrictMode&gt;</span>
+    <span class="tag">&lt;App /&gt;</span>
+  <span class="tag">&lt;/React.StrictMode&gt;</span>,
+)</pre></div>
+      </div>
+      <p>It selects the empty <code>&lt;div id="root"&gt;</code> in <code>index.html</code> and injects the <code>&lt;App /&gt;</code> component inside it, triggering the entire rendering flow.</p>
+    </section>
+
+    <!-- 9. Import/Export Explained -->
+    <section class="section visible">
+      <div class="section-header">
+        <div class="section-number">Concept</div>
+        <h2>The Import & Export System</h2>
+      </div>
+
+      <p>JavaScript uses an import/export system to share code between files.</p>
+      
+      <h3>1. Default Export & Import</h3>
+      <p>If a file exports exactly <strong>ONE main thing</strong>, use <code>export default</code>. When importing a default, you do <strong>not</strong> use curly braces.</p>
+      <div class="code-block">
+        <div class="code-body"><pre><span class="comment">// In Header.jsx</span>
+<span class="keyword">export default</span> <span class="function">Header</span>;
+
+<span class="comment">// In App.jsx</span>
+<span class="keyword">import</span> <span class="function">Header</span> <span class="keyword">from</span> <span class="string">'./components/Header'</span>;</pre></div>
+      </div>
+
+      <h3>2. Named Export & Import</h3>
+      <p>If a file exports <strong>multiple things</strong>, use <code>export</code> before the function. When importing, you <strong>MUST use curly braces</strong> and exact names.</p>
+      <div class="code-block">
+        <div class="code-body"><pre><span class="comment">// In Utilities.js</span>
+<span class="keyword">export function</span> <span class="function">calculate()</span> {}
+<span class="keyword">export function</span> <span class="function">format()</span> {}
+
+<span class="comment">// In App.jsx</span>
+<span class="keyword">import</span> { <span class="function">calculate</span>, <span class="function">format</span> } <span class="keyword">from</span> <span class="string">'./Utilities'</span>;</pre></div>
+      </div>
+
+      <div class="callout warning">
+        <div class="callout-icon">⚠️</div>
+        <div class="callout-content">
+          <strong>Common Mistakes</strong>
+          <p>
+            • <strong>Incorrect path:</strong> <code>import Header from './Header'</code> (Forgot the <code>components/</code> folder).<br>
+            • <strong>Wrong capitalization:</strong> Trying to import <code>header.jsx</code> instead of <code>Header.jsx</code>.<br>
+            • <strong>Forgot to export:</strong> React throws a module not found error.<br>
+            • <strong>Imported but not rendered:</strong> If you import <code>Header</code> but forget to type <code>&lt;Header /&gt;</code> in the return block, it won't show on screen!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Application Flow & Testing -->
+    <section class="section visible" style="margin-bottom: var(--space-4xl);">
+      <div class="section-header">
+        <div class="section-number">Final</div>
+        <h2>Application Flow & Testing Checklist</h2>
+      </div>
+
+      <h3>Complete Rendering Flow</h3>
+      <p>Here is how React assembles the final page:</p>
+      <div class="code-block">
+        <div class="code-body"><pre><span class="function">main.jsx</span> (The Entry Point)
+   ↓ 
+   It mounts the <span class="tag">&lt;App /&gt;</span> component to the browser.
+   ↓
+<span class="function">App.jsx</span> (The Parent)
+   ↓
+   App says, "I need to display a Header, a Body, and a Footer."
+   ├── <span class="function">Header.jsx</span> (Draws the top navigation and logo)
+   ├── <span class="function">Body.jsx</span>   (Draws the main content and cards)
+   └── <span class="function">Footer.jsx</span> (Draws the copyright at the bottom)</pre></div>
+      </div>
+
+      <h3>Final Testing Checklist</h3>
+      <p>Before celebrating, verify the following:</p>
+      <ul>
+        <li>✅ The application runs without errors (<code>npm run dev</code> is active).</li>
+        <li>✅ The Header appears at the top with a dark background.</li>
+        <li>✅ The Body appears in the middle with your two styled cards.</li>
+        <li>✅ The Footer appears firmly at the bottom of the screen.</li>
+        <li>✅ All CSS files are loaded and applied correctly.</li>
+        <li>✅ The layout is responsive (cards stack on mobile screens).</li>
+        <li>✅ Check your browser Console (Right Click &gt; Inspect &gt; Console) for any red errors.</li>
+      </ul>
+      
+      <div class="callout tip">
+        <div class="callout-icon">🎉</div>
+        <div class="callout-content">
+          <strong>Congratulations!</strong>
+          <p>You have successfully built a clean, scalable React application using component-based architecture. You now understand how components talk to each other and how React assembles the UI!</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <p>
+      Built with ❤️ for learning
+      <svg class="react-icon" viewBox="-11.5 -10.232 23 20.463" xmlns="http://www.w3.org/2000/svg" style="width:20px;height:20px"><circle r="2.05" fill="#61dafb"/><g stroke="#61dafb" stroke-width="1" fill="none"><ellipse rx="11" ry="4.2"/><ellipse rx="11" ry="4.2" transform="rotate(60)"/><ellipse rx="11" ry="4.2" transform="rotate(120)"/></g></svg>
+      React Guide — 2024
+    </p>
+  </footer>
+
+  <script>
+    // Theme logic
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const html = document.documentElement;
+
+    const savedTheme = localStorage.getItem('react-guide-theme') || 'light';
+    html.setAttribute('data-theme', savedTheme);
+    themeIcon.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+
+    themeToggle.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('react-guide-theme', next);
+      themeIcon.textContent = next === 'dark' ? '🌙' : '☀️';
+    });
+
+    // Copy code logic
+    window.copyCode = function (btn) {
+      const codeBlock = btn.closest('.code-block');
+      const codeBody = codeBlock.querySelector('.code-body pre');
+      const text = codeBody.textContent;
+
+      navigator.clipboard.writeText(text).then(() => {
+        btn.classList.add('copied');
+        btn.innerHTML = '✓ Copied!';
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.innerHTML = '📋 Copy';
+        }, 2000);
+      });
+    };
+  </script>
+</body>
+</html>
